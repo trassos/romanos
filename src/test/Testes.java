@@ -1,9 +1,11 @@
 package test;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.InvalidNumberException;
 import services.Resolvedor;
 
 public class Testes {
@@ -24,11 +26,10 @@ public class Testes {
 
 	@Test
 	public void deveInvalidarVV() {
-		Integer soma = Resolvedor.resolver("VV");
-		System.out.println(soma);
-		assertEquals(10,soma);
+		Throwable exception = assertThrows(InvalidNumberException.class,
+				()->{Resolvedor.resolver("VV");} );
 	}
-
+		
 	@Test
 	public void deveEntenderIIX() {
 		Integer soma = Resolvedor.resolver("IIX");
